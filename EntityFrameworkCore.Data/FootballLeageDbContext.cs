@@ -15,5 +15,29 @@ namespace EntityFrameworkCore.Data
             
             optionsBuilder.UseSqlite($"Data Source=FootballLeage_EfCore.db");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Team>().HasData(
+                new Team
+                {
+                    TeamId = 1,
+                    Name = "Team A FC",
+                    CreatedDate = new DateTime(2025, 04, 17)
+                }, 
+                new Team
+                {
+                    TeamId = 2,
+                    Name = "Team B FC",
+                    CreatedDate = new DateTime(2025, 04, 17)
+                },
+                new Team
+                {
+                    TeamId = 3,
+                    Name = "Team C FC",
+                    CreatedDate = new DateTime(2025, 04, 17),
+                }
+            );
+        }
     }
 }
