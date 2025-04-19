@@ -1,5 +1,6 @@
 ﻿using EntityFrameworkCore.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EntityFrameworkCore.Data
 {
@@ -13,7 +14,10 @@ namespace EntityFrameworkCore.Data
             // Using SQL Server
             //optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=FootballLeage_EfCore; Encrypt=False");
             
-            optionsBuilder.UseSqlite($"Data Source=FootballLeage_EfCore.db");
+            optionsBuilder.UseSqlite($"Data Source=FootballLeage_EfCore.db")
+                .LogTo(Console.WriteLine, LogLevel.Information)
+                .EnableSensitiveDataLogging()
+                .EnableDetailedErrors();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
