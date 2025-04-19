@@ -4,11 +4,16 @@
 var context = new FootballLeageDbContext();
 
 // Select all teams
-// Select * FROM Teams
 
-var teams = context.Teams.ToList();
+getAllTeams();
 
-foreach(var team in teams)
+void getAllTeams()
 {
-    Console.WriteLine(team.Name);
+    // Select * FROM Teams
+    var teams = context.Teams.ToList();
+
+    foreach (var team in teams)
+    {
+        Console.WriteLine(team.Name);
+    }
 }
